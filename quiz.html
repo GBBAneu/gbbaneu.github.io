@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GBBA's Giveaway</title>
+    <style>
+        /* Common styles for the page */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #6e543e;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px;
+        }
+        .container {
+            background-color: #f5e3cc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            margin: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        iframe {
+            border: 30px;
+            align-content: center;
+            width: 1360px;
+            height: 600px;
+        }
+        #email {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #enterRouletteBtn {
+            background-color: #ff9800;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #enterRouletteBtn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #itemDisplay {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+            color: #964B00;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GBBA's Giveaway</h1>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="container">
+        <h2>GBBA's Funtime Quiz - Win Goodies by answering!</h2>
+        <iframe src="https://forms.gle/qVUD9WRsMqx66fic8" width="100%"></iframe>
+    </div>
+
+    <!-- Random Selection Section -->
+    <div class="container" id="randomSection" style="display: none;">
+        <h2>GBBA's Giveaway - Random Selection</h2>
+        <h3>Enter Your Northeastern Email</h3>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button id="enterRouletteBtn">Enter the Giveaway</button>
+        <p id="itemDisplay"></p>
+    </div>
+
+    <script>
+        // List of items for the giveaway
+        let items = [
+            "Item 1",
+            "Item 2",
+            "Item 3",
+            "Item 4",
+            "Item 5"
+        ];
+
+        const emailInput = document.getElementById("email");
+        const enterRouletteBtn = document.getElementById("enterRouletteBtn");
+        const itemDisplay = document.getElementById("itemDisplay");
+
+        // Function to randomly select an item from the list
+        function pickRandomItem() {
+            const randomIndex = Math.floor(Math.random() * items.length);
+            return items.splice(randomIndex, 1)[0];
+        }
+
+        enterRouletteBtn.addEventListener("click", function() {
+            const email = emailInput.value.trim();
+
+            if (!email) {
+                alert("Please enter your northeastern email.");
+                return;
+            }
+
+            if (!email.endsWith("@northeastern.edu")) {
+                alert("Please use your northeastern email ID to enter the giveaway.");
+                return;
+            }
+
+            if (items.length === 0) {
+                itemDisplay.textContent = "All items have been given away!";
+                return;
+            }
+
+            const selectedItem = pickRandomItem();
+            itemDisplay.innerHTML = `<div>Congratulations ${email}!</div><div>You've won: ${selectedItem}.</div><div>Now show this at our table to claim your prize!</div>`;
+            enterRouletteBtn.disabled = true;
+        });
+
+        // Delay showing the "Random Selection" section
+        setTimeout(function() {
+            document.getElementById("randomSection").style.display = "block";
+        }, 25000); // 20 seconds delay
+    </script>
+</body>
+</html>

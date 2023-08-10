@@ -3,7 +3,6 @@
 <head>
     <title>GBBA's Giveaway</title>
     <style>
-        /* Common styles for the page */
         body {
             margin: 0;
             padding: 0;
@@ -30,8 +29,8 @@
         iframe {
             border: 30px;
             align-content: center;
-            width: 100%; /* Adjust the width to 100% for responsiveness */
-            max-width: 100%; /* Limit the maximum width for larger screens */
+            width: 100%; 
+            max-width: 100%;
             height: 600px;
         }
         #email {
@@ -97,7 +96,7 @@
         const enterRouletteBtn = document.getElementById("enterRouletteBtn");
         const itemDisplay = document.getElementById("itemDisplay");
 
-        // Function to randomly select an item from the list
+        // Randomly select an item from the list
         function pickRandomItem() {
             const randomIndex = Math.floor(Math.random() * items.length);
             return items.splice(randomIndex, 1)[0];
@@ -129,7 +128,7 @@
         // Delay showing the "Random Selection" section
         setTimeout(function() {
             document.getElementById("randomSection").style.display = "block";
-        }, 15000);
+        }, 2000);
     </script>
 </body>
 </html>

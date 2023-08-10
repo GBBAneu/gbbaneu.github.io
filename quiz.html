@@ -3,6 +3,7 @@
 <head>
     <title>GBBA's Giveaway</title>
     <style>
+        /* Common styles for the page */
         body {
             margin: 0;
             padding: 0;
@@ -29,7 +30,8 @@
         iframe {
             border: 30px;
             align-content: center;
-            width: 1360px;
+            width: 100%; /* Adjust the width to 100% for responsiveness */
+            max-width: 100%; /* Limit the maximum width for larger screens */
             height: 600px;
         }
         #email {
@@ -124,9 +126,10 @@
             enterRouletteBtn.disabled = true;
         });
 
+        // Delay showing the "Random Selection" section
         setTimeout(function() {
             document.getElementById("randomSection").style.display = "block";
-        }, 7000);
+        }, 15000);
     </script>
 </body>
 </html>
